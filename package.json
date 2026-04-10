@@ -1,18 +1,21 @@
 {
   "name": "fridge-ai",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Fridge AI backend server",
+  "main": "server.mjs",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.mjs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
+    "bcrypt": "^5.1.1",
+    "better-sqlite3": "^11.7.0",
     "cors": "^2.8.6",
     "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.2",
     "openai": "^6.33.0"
   }
 }
