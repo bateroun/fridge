@@ -296,9 +296,9 @@ app.post("/chat", requireAuth, async (req, res) => {
     const flatItems = normalizeFridge(fridgeState);
     const fridgeText = makeFridgeText(flatItems);
 
-    const response = await client.responses.create({
-      model: "gpt-5-mini",
-      input: [
+    const response = await client.chat.completions.create({
+      model: "gpt-4o-mini",
+      messages: [
         {
           role: "system",
           content: `
@@ -325,7 +325,7 @@ ${fridgeText}
     });
 
     res.json({
-      reply: response.output_text || "응답을 만들지 못했어요."
+      reply: response.choices[0]?.message?.content || "응답을 만들지 못했어요."
     });
   } catch (error) {
     console.error("chat error:", error);
